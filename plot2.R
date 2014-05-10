@@ -17,7 +17,7 @@ plot2_fn<-function( data ){
 plot2<-function(){
 	pw_data<-getData()
 	plot2_fn(pw_data)
-	dev.copy(png, file="plot2.png", height=480, width=480)
+	dev.copy(png, file="plot2.png", height=480, width=480, bg="white")
 	dev.off()
 }
 

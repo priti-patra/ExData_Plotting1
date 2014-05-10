@@ -13,7 +13,7 @@ plot1_fn<-function( data ){
 plot1<-function(){
 	pw_data<-getData()
 	plot1_fn(pw_data)
-	dev.copy(png, file="plot1.png", height=480, width=480)
+	dev.copy(png, file="plot1.png", height=480, width=480, bg="white")
 	dev.off()
 }
 
