@@ -1,17 +1,17 @@
 ##getData: Retrieves required data from input file and return data as power_data data.frame
 getData<-function(){
 	lines<- readLines("household_power_consumption.txt")
-	power_data<-read.table(textConnection(lines[grep('^[1-2]/2/2007',lines)]),sep=";",col.names=colnames(read.table("household_power_consumption.txt",sep=";",nrow=1,header=TRUE)))
+	power_data<-read.table(textConnection(lines[grep('^[1-2]/2/2007',lines)]),sep=";", na.strings="?", col.names=colnames(read.table("household_power_consumption.txt",sep=";",nrow=1,header=TRUE)))
 }
 
 ##plot3_fn: Creates a plot of datetime vs (Sub_metering_1,Sub_metering_2,Sub_metering_3)
 plot3_fn<-function( data ){
 	yrange<-range(data$Sub_metering_1,data$Sub_metering_2,data$Sub_metering_3)
-	datetime <- as.POSIXlt(paste(dd$Date, dd$Time), format='%d/%m/%Y %H:%M:%S')
-	plot(datetime,dd$Sub_metering_1,type="n",xlab="",ylab="Energy sub metering",ylim=yrange)
-	lines(datetime,dd$Sub_metering_1,type="l",col="black")
-	lines(datetime,dd$Sub_metering_2,type="l",col="red")
-	lines(datetime,dd$Sub_metering_3,type="l",col="blue")
+	datetime <- as.POSIXlt(paste(data$Date, data$Time), format='%d/%m/%Y %H:%M:%S')
+	plot(datetime,data$Sub_metering_1,type="n",xlab="",ylab="Energy sub metering",ylim=yrange)
+	lines(datetime,data$Sub_metering_1,type="l",col="black")
+	lines(datetime,data$Sub_metering_2,type="l",col="red")
+	lines(datetime,data$Sub_metering_3,type="l",col="blue")
 	legend("topright",lty=1,col=c("black","red","blue"),legend=c(paste("Sub_metering_",1:3)))
 
 }

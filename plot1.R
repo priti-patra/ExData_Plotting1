@@ -1,7 +1,7 @@
 ##getData: Retrieves required data from input file and return data as power_data data.frame
 getData<-function(){
 	lines<- readLines("household_power_consumption.txt")
-	power_data<-read.table(textConnection(lines[grep('^[1-2]/2/2007',lines)]),sep=";",col.names=colnames(read.table("household_power_consumption.txt",sep=";",nrow=1,header=TRUE)))
+	power_data<-read.table(textConnection(lines[grep('^[1-2]/2/2007',lines)]),sep=";", na.strings="?",col.names=colnames(read.table("household_power_consumption.txt",sep=";",nrow=1,header=TRUE)))
 }
 
 ##plot1_fn: Plots histogram for Global_active_power of data
