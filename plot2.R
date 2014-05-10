@@ -16,8 +16,8 @@ plot2_fn<-function( data ){
 ##plot2: Saves plot created by  plot2_fn to corresponding png file
 plot2<-function(){
 	pw_data<-getData()
+	png(file="plot2.png", height=480, width=480)
 	plot2_fn(pw_data)
-	dev.copy(png, file="plot2.png", height=480, width=480, bg="white")
 	dev.off()
 }
 

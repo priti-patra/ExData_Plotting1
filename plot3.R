@@ -19,8 +19,8 @@ plot3_fn<-function( data ){
 ##plot3: Saves plot created by  plot3_fn to corresponding png file
 plot3<-function(){
 	pw_data<-getData()
+	png(file="plot3.png", height=480, width=480)
 	plot3_fn(pw_data)
-	dev.copy(png, file="plot3.png", height=480, width=480, bg="white")
 	dev.off()
 }
 
